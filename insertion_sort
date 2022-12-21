@@ -14,3 +14,21 @@ do
   numberArray[i]+=$number
 done
 
+for (( k=1; k<$AmountOfNumbers; k++ ))
+do
+  for (( l=k; l>=0; l-- ))
+  do
+    if [ "${numberArray[k]}" -lt "${numberArray[l]}" ]; then
+      numberSwitch=${numberArray[k]}
+      numberArray[k]=${numberArray[l]}
+      numberArray[l]=$numberSwitch
+    fi
+  done
+done
+
+echo "Sorted numbers: "
+for (( j=0; j<$AmountOfNumbers; j++ ))
+do 
+  echo "${numberArray[j]}"
+done
+
