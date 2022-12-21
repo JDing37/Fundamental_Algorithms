@@ -5,8 +5,6 @@ numberArray=()
 echo "How many numbers would like to sort: "
 read AmountOfNumbers
 
-indexedNumber=$((AmountOfNumbers-1))
-
 echo "Please enter the numbers: "
 for (( i=0; i<$AmountOfNumbers; i++ ))
 do
@@ -14,16 +12,20 @@ do
   numberArray[i]+=$number
 done
 
-for (( k=1; k<$AmountOfNumbers; k++ ))
+x=0
+
+for (( k=0; k<$AmountOfNumbers; k++ ))
 do
   for (( l=k; l>=0; l-- ))
   do
-    if [ "${numberArray[k]}" -lt "${numberArray[l]}" ]; then
-      numberSwitch=${numberArray[k]}
-      numberArray[k]=${numberArray[l]}
+    if [ "${numberArray[k-x]}" -lt "${numberArray[l]}" ]; then
+      numberSwitch=${numberArray[k-x]}
+      numberArray[k-x]=${numberArray[l]}
       numberArray[l]=$numberSwitch
+      (( x++ ))
     fi
   done
+  x=0
 done
 
 echo "Sorted numbers: "
