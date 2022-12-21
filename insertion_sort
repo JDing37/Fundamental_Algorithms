@@ -1,1 +1,16 @@
-echo "Hello world"
+#!/bin/bash
+
+numberArray=()
+
+echo "How many numbers would like to sort: "
+read AmountOfNumbers
+
+indexedNumber=$((AmountOfNumbers-1))
+
+echo "Please enter the numbers: "
+for (( i=0; i<$AmountOfNumbers; i++ ))
+do
+  read number 
+  numberArray[i]+=$number
+done
+
